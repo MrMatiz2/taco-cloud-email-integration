@@ -11,10 +11,10 @@ public class EmailProperties {
     private String password;
     private String host;
     private String mailbox;
-    private long pollRate = 30000;
+    private long pollRate = 10000;
 
     public String getImapUrl() {
-        return String.format("imaps://%s:%s@%s/%s",
+        return String.format("imap://%s:%s@%s/%s",
                 this.username, this.password, this.host, this.mailbox);
     }
 
