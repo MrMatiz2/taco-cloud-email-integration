@@ -3,7 +3,6 @@ package com.example.tacocloudemailintegration.services.handler;
 import com.example.tacoclouddomain.email.EmailOrder;
 import com.example.tacocloudemailintegration.services.configuration.ApiProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -38,7 +37,7 @@ public class OrderSubmitMessageHandler implements GenericHandler<EmailOrder> {
             String orderJson = mapper.writeValueAsString(order);
             HttpEntity<String> request = new HttpEntity<>(orderJson, headersHttp);
             rest.postForObject(apiProps.getUrl(), request, String.class);
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.error(e.getMessage());
         }
         return null;
