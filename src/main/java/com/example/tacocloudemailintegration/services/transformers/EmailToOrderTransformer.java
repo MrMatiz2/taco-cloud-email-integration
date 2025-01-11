@@ -69,7 +69,7 @@ public class EmailToOrderTransformer extends AbstractMailMessageTransformer<Emai
     }
 
     private EmailOrder parseEmailToOrder(String email, String content) {
-        EmailOrder order = new EmailOrder(email);
+        EmailOrder order = new EmailOrder(email, new ArrayList<>());
         String[] lines = content.split("\\r?\\n");
         for (String line : lines) {
             if (line.trim().length() > 0 && line.contains(":")) {
@@ -85,7 +85,7 @@ public class EmailToOrderTransformer extends AbstractMailMessageTransformer<Emai
                     }
                 }
 
-                Taco taco = new Taco(tacoName);
+                Taco taco = new Taco(tacoName, new ArrayList<>());
                 taco.setIngredients(ingredientCodes);
                 order.addTaco(taco);
             }
